@@ -1,0 +1,21 @@
+/Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/src/src_cvodes/cvodes_bbdpre.o: \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/src/src_cvodes/cvodes_bbdpre.c \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/src/src_cvodes/cvodes_impl.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/cvodes/cvodes.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/sundials/sundials_nvector.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/sundials/sundials_types.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/sundials/sundials_config.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/src/src_cvodes/cvodes_bbdpre_impl.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/cvodes/cvodes_bbdpre.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/sundials/sundials_band.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/sundials/sundials_direct.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/src/src_cvodes/cvodes_spils_impl.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/cvodes/cvodes_spils.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/sundials/sundials_iterative.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/cvodes/cvodes_sptfqmr.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/sundials/sundials_sptfqmr.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/cvodes/cvodes_spbcgs.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/sundials/sundials_spbcgs.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/cvodes/cvodes_spgmr.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/sundials/sundials_spgmr.h \
+ /Users/davidhenriques/GoogleDrive/SYNBAD/Kernel/libAMIGO/include/include_cvodes/sundials/sundials_math.h
