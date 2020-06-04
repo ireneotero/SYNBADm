@@ -1,0 +1,110 @@
+function [ solution,nfeval,ifail,LM,nLM ] =...
+            mits( objfunc,xl,xu,nint,nbin,m,me,options )
+%***********************************************************************
+% 
+% 
+%         An Implementation of a Tabu Search Algorithm for Solvinglocal
+%             Mixed-Integer Nonlinear Optimization Problems 
+% 
+% 
+%    MITS solves the mixed-integer nonlinear program (MINLP)
+% 
+%              minimize        F(X,Y)
+%              subject to      G(J)(X,Y)   =  0  , J=1,...,ME
+%                              G(J)(X,Y)  >=  0  , J=ME+1,...,M
+%                              XL  <=  X  <=  XU
+%                              YL  <=  Y  <=  YU
+% 
+%    where X is a real and y an integer variable vector.
+%  
+%    It is not assumed that the mixed-integer program is relaxable. In other 
+%    words, function values are required only at integer points. 
+% 
+% 
+%    USAGE:
+% 
+%         [ solution,nfeval,ifail,LM,nLM ] =...
+%                 mits( xl,xu,nint,nbin,m,me,options ) 
+% 
+%    ARGUMENTS :
+% 
+%    INPUT :
+%
+%    objfunc : Handle to the function that calculate the objective function
+%              and the constaraint values
+%    xl,xu :   The arrays XL and XU must contain the upper and lower bounds 
+%              of the variables, first for the continuous, then for the 
+%              integer and subsequently for the binary variables.
+%    nint :    Number of integer variables.
+%    nbin :    Number of binary variables.
+%    m :       Total number of constraints.
+%    me :      Number of equality constraints.
+%
+%    Structure options.[]
+%     x0 :      X has to contain starting values. 
+%               X contains first the continuous, then the integer followed by
+%               the binary variables.
+%     acc :     The user has to specify the desired final accuracy
+%               (e.g. 1.0D-7) for the constraints and as a termination criterion
+%               for the local solver. 
+%     maxit :   Maximum number of iterations, where one iteration corresponds to
+%               one evaluation of the neighbourhood and maybe an additional
+%               start of the local solver.
+%     maxun :   The algorithm will stop after the maximum number of consecutive
+%               iterations without improvement has been reached.
+%     maxtime : Maximum time for MITS run in seconds.
+%     maxfun :  Maximum number of function evaluations. 
+%     locstart :If true: MITS starts with a local solver run from the
+%               initial guess.
+%     iprint :  Specification of the desired output level.
+%           0 :  No output of the program.
+%           1 :  Only a final convergence analysis is given.
+%           2 :  One line of intermediate results is printed in each iteration.
+%           3 :  More detailed information is printed for each iteration.
+%     iout :    Integer indicating the desired output unit number, i.e., all
+%               fprintf-statements start with 'fprintf(iout,... '. The user
+%               has to open that file before running MITS.
+%     fex :     MITS terminates if a feasible point with a objective
+%               function value lower or equal to fex has been found.
+%     convergence_curve :   If 1 a convergence curve is ploted.
+%     plot2D :  If 1 the visited points are ploted to demonstrate the 
+%               algorithm's behaviour.
+%     pnam :    The name of the problem
+%     save_directory : The final data are saved in a file result_'pnam'.mat.
+%               Convergence curves are stored in the same directory.
+%
+%    OUTPUT :
+%
+%    ifail :   The parameter shows the reason for terminating a solution
+%              process. On return IFAIL
+%              could contain the following values:
+%          -1 :   Input error
+%           1 :   Termination after MAXIT iterations.
+%           2 :   More than MAXUND iterations.
+%           3 :   More than MAXFUN function evaluations.
+%           4 :   MAXTIME is exceeded.
+%           5 :   objective function value lower or equal than FEX.
+%    solution :Contains information about the best point found
+%    nfeval :  number of function evaluations during the optimisation
+%    LM :      contains all the points the local solver converged to.
+%    nLM :     number of "local solutions"
+% 
+%    AUTHOR:     O. Exler
+%    -------     IIM - CSIC
+%                36208 Vigo / Pontevedra
+%                Spain
+% 
+% 
+% 
+%    VERSION:    2.2 (9/2006) 
+%    --------
+% 
+% If you use this software for your papers, please cite the following reference:
+%
+% Exler, O., L.T. Antelo, J.A. Egea, A.A. Alonso and J.R. Banga (2008) 
+% A Tabu search-based algorithm for mixed-integer nonlinear problems 
+% and its application to integrated process and control system design. 
+% Computers & Chemical Engineering, 32(8):1877-1891.
+%
+% 
+%***********************************************************************
