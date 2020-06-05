@@ -7,10 +7,10 @@ Matlab toolbox for the automated design of biocircuits based on ODE models and M
 
 
 Once you copy the toolbox to the directory of your choice,
-please change the name of the Main Folder ('SYNBADm', 'SYNBADm-master'...) to 'SYNBAD'
+please change the name of the Main Folder (`SYNBADm`, `SYNBADm-master`...) to `SYNBAD`
 
 
-User manual is included in the 'Documentation' Folder
+User manual is included in the `Documentation` Folder
 
 
 
