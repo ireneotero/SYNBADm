@@ -1,19 +1,15 @@
+function synbaddir = synbad_path
+% synbad_path  Simplified version
+% Adds all SYNBAD subfolders to the MATLAB path and returns the root path.
+% No version check.
 
-synbadversion='SYNBAD';
-synbaddir=what(synbadversion);
+    % Get the folder containing this file (SYNBAD root)
+    root_path = fileparts(mfilename('fullpath'));
 
-if(length(synbaddir)<1)
-    cprintf('*red','\n\n------> ERROR message\n\n');
-    cprintf('red','\t\t synbad_path: The synbad version % could be found.\n\n',synbadversion);
-    return;
-   
+    % Add all subfolders recursively to the MATLAB path
+    addpath(genpath(root_path));
+
+    % Return the synbaddir struct for SYNBAD_Startup
+    synbaddir.path = root_path;
+
 end
-
-if(length(synbaddir)>1)
-    cprintf('*red','\n\n------> ERROR message\n\n');
-    cprintf('red','\t\t synbad_path: You have multpile synbad_versions in your path, clear you path to avoid problems.\n\n');
-    return;
-    
-end
-
-inputs.pathd.synbad_path=synbaddir.path;
