@@ -1,53 +1,46 @@
 
+function SYNBAD_Startup
+% SYNBAD_Startup - Start up SYNBAD toolbox
+% Adds all paths, initializes synbaddir, and prepares environment
+% No version check, compatible with simplified synbad_path.m
 
-pwd_synbad=pwd;
-addpath(genpath(pwd_synbad))
+fprintf('\n  >>>>>>>> SYNBAD has been added to the Matlab path <<<<<<<<\n\n');
+fprintf('----> Adding paths to current MATLAB session....\n');
 
-disp('  ')
-disp('  >>>>>>>> SYNBAD has been added to the Matlab path <<<<<<<<')
-disp('  ')
+% Ensure SYNBAD root folder is on path
+% This allows MATLAB to find synbad_path.m
+addpath(genpath(fileparts(mfilename('fullpath'))));
 
-fprintf(1,'\n----> Adding paths to current MATLAB session....\n');
+% Get SYNBAD root path from simplified synbad_path function
+synbaddir = SYNBAD_path;   % <- captures the returned struct
+my_synbad_path = synbaddir.path;
 
-SYNBAD_path;
-
-% DETECTS MALTLAB VERSION
+% Detect MATLAB version (optional, keep for info)
 matlab_version = ver('matlab');
 
-% DETECTS OPERATING SYSTEM & GENERATES MEX OPTIONS FILES
-fprintf(1,'\n----> To use C models run mex -setup and choose a valid compiler. Alternatively use GNUMEX.\n');
-
+% Operating system detection and MEX setup hints
+fprintf('\n----> To use C models run mex -setup and choose a valid compiler. Alternatively use GNUMEX.\n');
 
 switch computer
-    
     case {'PCWIN'}
-        
-        synbad_path;
-        my_synbad_path=synbaddir.path;
+        % 32-bit Windows
         setenv('PATH', [getenv('PATH') ';' fullfile(my_synbad_path,'Kernel','libAMIGO','lib_win32','vs')]);
-        if  ~isempty(strfind(synbaddir.path,' '))
-            fprintf(2,'WARNING:\n\n\t\tYour synbad was installed in the path: %s\n\t\tThe path contains whitespace character, which can lead to errors using  C compilers.\n\t\tWe highly recommend to relocate synbad.\n',matlabroot)
-        end
 
     case 'PCWIN64'
-        
-        SYNBAD_path;
-        my_synbad_path=synbaddir.path;
+        % 64-bit Windows
         setenv('PATH', [getenv('PATH') ';' fullfile(my_synbad_path,'Kernel','libAMIGO','lib_win64')]);
-        if  ~isempty(strfind(synbaddir.path,' '))
-            fprintf(2,'WARNING:\n\n\t\tYour synbad was installed in the path: %s\n\t\tThe path contains whitespace character, which can lead to errors using  C compilers.\n\t\tWe highly recommend to relocate synbad.\n',matlabroot)
-        end
 
-        
     case 'MACI64'
-        
-        SYNBAD_path;
-        my_synbad_path=synbaddir.path;
+        % macOS
         setenv('DYLD_LIBRARY_PATH', ['/usr/local/lib:' getenv('DYLD_LIBRARY_PATH')]);
         !export DYLD_LIBRARY_PATH
+
+    otherwise
+        fprintf('Warning: Operating system not explicitly supported by this startup script.\n');
 end
 
+fprintf('\n----> Startup finished....\n');
 
-fprintf(1,'\n----> Startup finished....\n');
-clear synbaddir  current_dir  fid matlab_version  mexoptsbatpath  path_matlab
-clear dll_mex  inputs  mexoptsbatfile  my_synbad_path   toolbox_path
+% Clean workspace from temporary variables
+clear my_synbad_path matlab_version
+end
